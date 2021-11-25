@@ -26,7 +26,7 @@ describe "validate service" do
       expect( last_response.status ).to eq 200
     end
 
-    it "Passes if http status code == 422" do
+    it "returns http status code 422, when the payload has not been sent in a format that is recognised by the service schema" do
       post 'v1/Hello',
       { 'first_name' => 'John' }.to_json,
       { 'CONTENT_TYPE' => 'application/json; charset=utf-8' }

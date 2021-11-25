@@ -3,14 +3,12 @@ require 'hoodoo'
 class ValidateImplementation < Hoodoo::Services::Implementation
   def create( context )
     body = context.request.body              # Get the body of the incoming request.
-    first_name = body['first_name']          # Get the 'first_name' value from the hash and save as variable. (json is passed into service as a string.)
-    surname = body['surname']                # Get the 'last_name' value from the hash and save as variable.
     rendered = PresenterClass.render( body ) # Render body before validating.
     validation_error = PresenterClass.validate( rendered )
     if validation_error.has_errors?
       context.response.add_errors( validation_error )
     else
-      context.response.set_resource( { 'message' => "Hello #{first_name} #{surname}" } ) # Set the resource of the response to message with the value of first_name then last_name
+      context.response.set_resource( { 'message' => "Hello #{body['first_name']} #{body['surname']}" } ) # Set the resource of the response to message with the value of first_name then last_name
     end
   end
 end

@@ -19,7 +19,7 @@ describe "validate service" do
       end
     }
 
-    it "Passes if http status code == 200" do
+    it "returns http status code == 200, when the payload is valid" do
       post 'v1/Hello',
       { 'first_name' => 'John' , 'surname' => 'Smith' }.to_json,
       { 'CONTENT_TYPE' => 'application/json; charset=utf-8' }

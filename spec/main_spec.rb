@@ -34,7 +34,7 @@ describe "validate service" do
       expect( last_response.status ).to eq 422
     end
 
-    it "When passed a valid request the service returns the correct response" do
+    it "returns a correct response body, when passed a valid request" do
       post 'v1/Hello',
       { 'first_name' => 'John' , 'surname' => 'Smith'}.to_json,
       { 'CONTENT_TYPE' => 'application/json; charset=utf-8' }

@@ -43,7 +43,7 @@ describe "validate service" do
       expect( last_response.body ).to be_json_eql(message)
     end
 
-    it "When passed an invalid request the service returns an error" do
+    it "returns an error that includes a code, message and reference when passed an invalid request" do
       post 'v1/Hello',
       { 'first_name' => 'John'}.to_json,
       { 'CONTENT_TYPE' => 'application/json; charset=utf-8' }
